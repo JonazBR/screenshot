@@ -3,7 +3,7 @@
     "name": "bot",
     "buildCommand": "npx playwright install",
         "builds": [
-       { "src": "/dist/src/server.js", "use": "@vercel/node" }
+       { "src": "/api.js", "use": "@vercel/node" }
     ],
 
     "routes": [
