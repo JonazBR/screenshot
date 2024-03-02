@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "api.js",
   "scripts": {
+    "build": "npx playwright install",
     "start": "node api.js"
   },
   "dependencies": {
