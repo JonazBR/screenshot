@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "api.js",
   "scripts": {
-    "vercel-build": "npx playwright install",
+    "vercel-build": "npx playwright install chromium",
     "start": "node api.js"
   },
   "dependencies": {
