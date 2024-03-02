@@ -26,7 +26,7 @@ app.get('/screenshot', async (req, res) => {
     res.send(screenshotBuffer);
   } catch (error) {
     console.error('Error taking screenshot:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error });
   }
 });
 
