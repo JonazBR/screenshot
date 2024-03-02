@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "main": "api.js",
   "scripts": {
+    "vercel-build": "npx playwright install",
     "start": "node api.js"
   },
   "dependencies": {
+    "chrome-aws-lambda": "^6",
     "express": "^4.17.1",
-    "playwright": "^1.42.1"
+    "playwright-core": "^1.27.1"
+    
+  },
+  "devDependencies": {
+    "playwright": "^1.27.1"
   }
 }
