@@ -1,11 +1,17 @@
 const express = require('express');
-const { chromium } = require('playwright');
+import chrome from 'chrome-aws-lambda'
+import { chromium } from 'playwright-core'
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 async function takeScreenshot(url) {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({
+    args: chrome.args,
+    executablePath: '/bin/chromium',
+    headless: true,
+    ignoreHTTPSErrors: true,
+  })
   const page = await browser.newPage();
   await page.goto(url);
   const screenshotBuffer = await page.screenshot();
