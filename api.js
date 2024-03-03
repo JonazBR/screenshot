@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 async function takeScreenshot(url) {
   const browser = await chromium.launch({
     args: chrome.args,
-    executablePath: '/bin/chromium',
+    executablePath: await chrome.executablePath,
     headless: true,
     ignoreHTTPSErrors: true,
   })
@@ -19,7 +19,7 @@ async function takeScreenshot(url) {
   return screenshotBuffer;
 }
 
-app.get('/screenshot', async (req, res) => {
+app.get('/api', async (req, res) => {
   const { url } = req.query;
 
   if (!url) {
