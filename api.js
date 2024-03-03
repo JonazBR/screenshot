@@ -138,9 +138,7 @@ async function checkProfile(username) {
 app.get('/check', async (req, res) => {
   const username =  req.query?.user || "gabriela";
 
-  if (!url) {
-    return res.status(400).json({ error: 'URL not provided' });
-  }
+
 
   try {
 checkProfile(username)
