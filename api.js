@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 async function takeScreenshot(url) {
   const browser = await playwright.chromium.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath,
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless
   });
   
