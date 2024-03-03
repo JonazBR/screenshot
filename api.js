@@ -1,18 +1,16 @@
 const express = require('express');
-import chromium  from 'chrome-aws-lambda';
+import chromium  from '@sparticuz/chromium';
 import playwright from 'playwright-core';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 async function takeScreenshot(url) {
-  const isOnVercel = chromium.headless;
-
-  const browser = await playwright.chromium.launch(isOnVercel ? {
+  const browser = await playwright.launch({
     args: chromium.args,
-    executablePath: await chromium.executablePath,
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
-  } : {});
+  });
   
   const page = await browser.newPage();
   await page.goto(url);
