@@ -1,17 +1,19 @@
 const express = require('express');
-import chrome from 'chrome-aws-lambda'
-import { chromium } from 'playwright-core'
+import chromium  from 'chrome-aws-lambda';
+import playwright from 'playwright-core';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 async function takeScreenshot(url) {
-  const browser = await chromium.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
-  })
+  const isOnVercel = chromium.headless;
+
+  const browser = await playwright.chromium.launch(isOnVercel ? {
+    args: chromium.args,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless,
+  } : {});
+  
   const page = await browser.newPage();
   await page.goto(url);
   const screenshotBuffer = await page.screenshot();
